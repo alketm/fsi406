@@ -38,3 +38,9 @@ $ aws s3 cp s3://deutsche-boerse-xetra-pds/ . --exclude "*" --include "2019-11-2
 $ for file in `ls 2019-11-22/*.csv`; do grep -v ISIN $file >> transactions; done
 ```
 At this point we have a whole month of records from Xetra in our bucket and we also have a file that contains all the records of a single day. We will use this file as the source of the data that we will be streaming into Kinesis for processing
+
+## Upgrade pip and install boto3
+
+1 - sudo pip install --upgrade pip
+
+2 - pip install boto3
