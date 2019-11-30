@@ -44,3 +44,27 @@ At this point we have a whole month of records from Xetra in our bucket and we a
 1 - sudo pip install --upgrade pip
 
 2 - pip install boto3
+
+3 - Create fileToKinesis.py file in Cloud9 and copy code from github (or run git clone)
+
+
+## Create Kinesis Data Stream
+
+1 - Go to the Kinesis service
+2 - Create new Data Stream
+3 - name it 'fsi406' and type 1 for number of shards
+4 - Click on 'Create'
+5 - Run fileToKinesis.py to push records into the Kinesis stream
+
+## Create Kinesis Data Analytics
+
+1 - Go to the Data Analytics link (on the left)
+2 - Click on 'Create application'
+3 - Name your application 'fsi406-app' and leave Runtime selection as SQL
+4 - Click on 'Create application'
+5 - On the next screen, click on Connect streaming data
+6 - On the next screen, leave the default selection of 'Kinesis data stream' and choose fsi406 in the drop down box
+7 - Leave all other options as default
+8 - Before clicking on discover schema - we now have to start publishing data to our data stream 'fsi406'
+9 - Edit schema
+
