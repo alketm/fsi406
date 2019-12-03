@@ -15,7 +15,7 @@ from pyspark.sql.functions import year, month, dayofmonth
 args = getResolvedOptions(sys.argv, ['JOB_NAME'])
 mergeCols = udf(lambda date, time: "{} {}:00".format(date,time))
 customSchema = StructType([
-    StructField("ISIN", StringType(), True),        
+    StructField("ISIN", StringType(), True),
     StructField("Mnemonic", StringType(), True),
     StructField("SecurityDesc", StringType(), True),
     StructField("SecurityType", StringType(), True),
@@ -53,5 +53,5 @@ dynaframe = DynamicFrame.fromDF(df3,glueContext,"xetra")
 glueContext.write_dynamic_frame.from_options(
     frame = dynaframe,
     connection_type = "s3",
-    connection_options = {"path": "s3:/
+    connection_options = {"path": "s3://fsi406-parquet-${user}/", "partitionKeys" : ["year", "month", "day"], "mode":"overwrite"},
     format = "parquet")
