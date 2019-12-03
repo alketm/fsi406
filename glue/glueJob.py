@@ -43,7 +43,7 @@ df = spark.read.format(
     "com.databricks.spark.csv").schema(customSchema).option(
     "quote", '"').option(
     "header", "true").option(
-    "delimiter", ',').load('s3://fsi406-xetra/*/*.csv')
+    "delimiter", ',').load('s3://fsi406-xetra-${user}/*/*.csv')
 
 df1 = df.withColumn("Timestamp",to_timestamp(mergeCols(("Date"),("Time"))))
 df2 = df1.drop("Date","Time")
